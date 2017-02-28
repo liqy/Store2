@@ -21,17 +21,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <!--分类产品列表页面-->
         <activity
             android:name=".activity.CategoryActivity"
             android:screenOrientation="portrait" />
-
+        <!--资讯详情页面-->
         <activity
             android:name=".activity.NewsDetailActivity"
             android:screenOrientation="portrait" />
-
-        <activity android:name=".activity.ProductDetailActivity"
-            android:screenOrientation="portrait"/>
+        <!--产品详情页面-->
+        <activity
+            android:name=".activity.ProductDetailActivity"
+            android:screenOrientation="portrait" />
+        <!--订单确认页面-->
+        <activity
+            android:name=".activity.ConfirmOrderActivity"
+            android:screenOrientation="portrait" />
+        <!--订单支付页面-->
+        <activity
+            android:name=".activity.OrderPayActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

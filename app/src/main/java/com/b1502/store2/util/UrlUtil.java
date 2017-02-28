@@ -45,6 +45,10 @@ public class UrlUtil {
         return String.format("%1$s%2$s?storeId=%3$s&%4$s=%5$s", Config.API_URL, url, Config.STORE_ID, params, newsId);
     }
 
+    public static String getAPIUrl(String url, String params, String newsId,int startRowIndex) {
+        return String.format("%1$s%2$s?storeId=%3$s&%4$s=%5$s", Config.API_URL, url, Config.STORE_ID, params, newsId);
+    }
+
     /**
      * 分页
      *
@@ -65,11 +69,33 @@ public class UrlUtil {
     //产品信息
     public static final String GetProduct = "/Shop/Product/GetProduct";
 
+    //产品详情
+    public static final String GetProductIntroduce = "/Shop/Product/GetProductIntroduce";
+
+    //加入购物车 POST
+    public static final String AddItem = "/Shop/ShoppingCart/AddItem";
+
+    //结算 ：创建订单 POST
+    public static final String CreateOrder = "/Shop/Order/CreateOrder";
+
+    //获取订单
+    public static final String GetOrder = "/Shop/Order/GetOrder";
+
+    //获取账户余额
+    public static final String GetAccount = "/Account/Account/GetAccount";
+
+    //确认订单 POST
+    public static final String ConfirmOrder = "/Shop/Order/ConfirmOrder";
+
+    //移除购物车 POST
+    public static final String RemoveItems = "/Shop/ShoppingCart/RemoveItems";
+
     //分类列表
     public static final String GetCategories = "/Shop/Product/GetCategories";
 
     //分类信息
     public static final String GetCategory = "/Shop/Product/GetCategory";
+    public static final String GetProducts = "/Shop/Product/GetProducts";
 
     //购物车
     public static final String GetItems = "/Shop/ShoppingCart/GetItems";

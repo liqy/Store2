@@ -75,6 +75,7 @@ public class HomeFragment extends BaseFragment {
             @Override
             public void onSuccess(String result) {
                 Log.d(TAG, result);
+                Log.d(TAG, UrlUtil.getImageUrl("/Images/Editor/7e18b4514314447387613d6b5fdd37d3_640_640.jpeg"));
             }
 
             @Override
@@ -92,6 +93,7 @@ public class HomeFragment extends BaseFragment {
     private void getAdvertItems() {
         StoreParams params = new StoreParams(UrlUtil.GetAdvertItems);
         x.http().get(params, new Callback.CommonCallback<String>() {
+
             @Override
             public void onCancelled(CancelledException cex) {
 

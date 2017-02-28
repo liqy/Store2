@@ -10,8 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.b1502.store2.R;
+import com.b1502.store2.network.PostParams;
 import com.b1502.store2.network.StoreParams;
 import com.b1502.store2.util.UrlUtil;
+import com.google.gson.Gson;
 
 import org.xutils.common.Callback;
 import org.xutils.x;
@@ -75,8 +77,15 @@ public class CartFragment extends BaseFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         getItems();
+
+        String[] productIds = {"157fbb6d-750d-41ec-b8da-047a7f96ca4b"};
+        int[] quantities = {1};
+        createOrder(productIds, quantities);
     }
 
+    /**
+     * 获取购物车列表
+     */
     private void getItems() {
         StoreParams params = new StoreParams(UrlUtil.GetItems);
         x.http().get(params, new Callback.CommonCallback<String>() {
@@ -101,5 +110,42 @@ public class CartFragment extends BaseFragment {
             }
         });
     }
+
+    /**
+     * 创建订单
+     *
+     * @param productIds 商品ID集合
+     * @param quantities 商品数量
+     */
+    public void createOrder(String[] productIds, int[] quantities) {
+        StoreParams params = new StoreParams(UrlUtil.CreateOrder);
+        params.setAsJsonContent(true);
+        PostParams postParams = new PostParams(productIds, quantities);
+        params.setBodyContent(new Gson().toJson(postParams));
+
+        x.http().post(params, new Callback.CommonCallback<String>() {
+            @Override
+            public void onCancelled(CancelledException cex) {
+
+            }
+
+            @Override
+            public void onSuccess(String result) {
+                //TODO 跳转到确认订单
+                Log.d(TAG, result);
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+
+            }
+
+            @Override
+            public void onFinished() {
+
+            }
+        });
+    }
+
 
 }

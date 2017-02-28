@@ -22,4 +22,9 @@ public class CategoryActivity extends BaseActivity {
 
         initStoreBar("分类列表");
     }
+
+    public void getProducts(String productCategoryId,int startRowIndex){
+
+    }
+
 }

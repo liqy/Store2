@@ -1,5 +1,7 @@
 package com.b1502.store2.util;
 
+import android.text.TextUtils;
+
 import com.b1502.store2.Config;
 
 /**
@@ -46,17 +48,34 @@ public class UrlUtil {
 
     /**
      * 根据产品分类过滤
+     *
      * @param url
      * @param id
-     * @param startRowIndex
+     * @param startRowIndex 开始索引
      * @return
      */
     public static String getAPIUrl(String url, String id, int startRowIndex) {
         String filter = String.format("ProductCategoryId=Guid.Parse('%1$s')", id);
-        return String.format("%1$s%2$s?storeId=%3$s&startRowIndex=%4$sz&filter=%5$s", Config.API_URL, url, Config.STORE_ID, startRowIndex, filter);
+        return String.format("%1$s%2$s?storeId=%3$s&startRowIndex=%4$s&filter=%5$s", Config.API_URL, url, Config.STORE_ID, startRowIndex, filter);
     }
 
-
+    /**
+     * @param url
+     * @param startRowIndex 开始索引
+     * @param maximumRows   每次请求数目
+     * @param status
+     * @return
+     */
+    public static String getAPIUrl(String url, int startRowIndex, int maximumRows, String status) {
+        if (TextUtils.isEmpty(status)) {
+            return String.format("%1$s%2$s?storeId=%3$s&startRowIndex=%4$s&maximumRows=%5$s",
+                    Config.API_URL, url, Config.STORE_ID, startRowIndex, maximumRows);
+        } else {
+            String filter = String.format("Status=\"%1$s\"", status);
+            return String.format("%1$s%2$s?storeId=%3$s&startRowIndex=%4$s&maximumRows=%5$s&filter=%6$s",
+                    Config.API_URL, url, Config.STORE_ID, startRowIndex, maximumRows, filter);
+        }
+    }
 
     /**
      * 分页
@@ -89,6 +108,9 @@ public class UrlUtil {
 
     //获取订单
     public static final String GetOrder = "/Shop/Order/GetOrder";
+
+    //订单列表
+    public static final String GetMyOrderList = "/Shop/Order/GetMyOrderList";
 
     //获取账户余额
     public static final String GetAccount = "/Account/Account/GetAccount";

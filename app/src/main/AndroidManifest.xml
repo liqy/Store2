@@ -41,9 +41,13 @@
         <activity
             android:name=".activity.OrderPayActivity"
             android:screenOrientation="portrait" />
-        <!--订单列表-->
+        <!-- 订单列表 -->
         <activity
             android:name=".activity.MyOrderListActivity"
+            android:screenOrientation="portrait" />
+        <!--订单详情-->
+        <activity
+            android:name=".activity.OrderDetailActivity"
             android:screenOrientation="portrait" />
     </application>
 

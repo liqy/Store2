@@ -23,6 +23,11 @@ public class StoreParams extends RequestParams {
         init();
     }
 
+    public StoreParams(String uri, String id, int startRowIndex) {
+        super(UrlUtil.getAPIUrl(uri, id, startRowIndex));
+        init();
+    }
+
     public StoreParams(String uri) {
         super(UrlUtil.getAPIUrl(uri));
         init();

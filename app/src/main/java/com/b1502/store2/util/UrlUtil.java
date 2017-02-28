@@ -35,7 +35,6 @@ public class UrlUtil {
     }
 
     /**
-     *
      * @param url
      * @param params "newsId"
      * @param newsId "648cf203-16f0-4603-b291-40864c472356"
@@ -45,9 +44,19 @@ public class UrlUtil {
         return String.format("%1$s%2$s?storeId=%3$s&%4$s=%5$s", Config.API_URL, url, Config.STORE_ID, params, newsId);
     }
 
-    public static String getAPIUrl(String url, String params, String newsId,int startRowIndex) {
-        return String.format("%1$s%2$s?storeId=%3$s&%4$s=%5$s", Config.API_URL, url, Config.STORE_ID, params, newsId);
+    /**
+     * 根据产品分类过滤
+     * @param url
+     * @param id
+     * @param startRowIndex
+     * @return
+     */
+    public static String getAPIUrl(String url, String id, int startRowIndex) {
+        String filter = String.format("ProductCategoryId=Guid.Parse('%1$s')", id);
+        return String.format("%1$s%2$s?storeId=%3$s&startRowIndex=%4$sz&filter=%5$s", Config.API_URL, url, Config.STORE_ID, startRowIndex, filter);
     }
+
+
 
     /**
      * 分页
@@ -95,6 +104,8 @@ public class UrlUtil {
 
     //分类信息
     public static final String GetCategory = "/Shop/Product/GetCategory";
+
+    //根据分类ID过滤产品
     public static final String GetProducts = "/Shop/Product/GetProducts";
 
     //购物车
